@@ -81,6 +81,19 @@ def logout():
     return redirect(url_for('home'))
 
 
+def get_uploaded_images():
+    uploadedImages = os.listdir( './app/static/uploads')
+    return uploadedImages
+    
+@app.route('/files')
+def files():
+    images = get_uploaded_images()
+    app.logger.info(images)
+    return render_template('file.html', images = images)
+    
+    
+    
+    
 ###
 # The functions below should be applicable to all Flask apps.
 ###

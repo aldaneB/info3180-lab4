@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1 class="page-header">Images</h1>
+
+<!--{{ images }}-->
+
+{% for images in images%}
+<div container-fluid>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="thumbnail">    
+          <img class="img-fluid"  style="width:100%"  alt = "images" src=" {{ url_for('static',filename = 'uploads/' + images)}}"/>
+        </div>   
+      </div>   
+    </div> 
+</div>
+{% endfor %}
+
+{% endblock %}
