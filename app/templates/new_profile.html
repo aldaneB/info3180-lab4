@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1>Add Profile</h1>
+
+<div class = 'container'>
+    <form action = "{{url_for('newProfile')}}", method = "POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        
+      <div class="form-group">         
+       {{ form.firstname.label }}
+        {% for message in form.firstname.errors %}
+           <div class="text-danger">{{message}}</div>
+           {%endfor%}
+       {{ form.firstname(class='form-control', placeholder="First Name")}} 
+      </div>
+      
+      <div class="form-group">         
+       {{ form.lastname.label }}
+        {% for message in form.lastname.errors %}
+           <div class="text-danger">{{message}}</div>
+           {%endfor%}
+       {{ form.lastname(class='form-control', placeholder="Last Name")}}
+       
+      </div>
+      
+      <div class="form-group">         
+         {{ form.gender.label }} 
+          {% for message in form.gender.errors %}
+           <div class="text-danger">{{message}}</div>
+             <SELECT>
+             <OPTION Value="Male">Male</OPTION>
+             <OPTION Value="Female">Female</OPTION>
+             </SELECT>
+           {%endfor%}
+         {{ form.gender(class='form-control', placeholder="Select Gender")}}  
+     
+      <div class="form-group">         
+          {{ form.email.label }} 
+          {% for message in form.email.errors %}
+              <div class="text-danger">{{message}}</div>
+              {%endfor%}
+          {{ form.email(class='form-control', placeholder="Email Address")}}  
+    
+      </div>
+      <div class="form-group">         
+          {{ form.location.label }}
+           {% for message in form.location.errors %}
+              <div class="text-danger">{{message}}</div>
+              {%endfor%}
+          {{ form.location(class='form-control',placeholder="e.g Kingston, Jamaica")}}  
+    
+      </div>
+       <div class="form-group">         
+          {{ form.bio.label }} 
+           {% for message in form.bio.errors %}
+              <div class="text-danger">{{message}}</div>
+           {%endfor%}
+          {{ form.bio(class='form-control', placeholder="Biography")}}  
+      </div>
+      
+      <div class="form-group">
+        {{ form.photo.label }}
+        {{ form.photo(class='form-control') }}
+        </div>
+      
+      <button type="submit" class="btn btn-success">Add Profile</button>
+    </form>
+</div>
+
+{% endblock %}
